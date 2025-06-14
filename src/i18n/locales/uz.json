@@ -1,5 +1,13 @@
 {
   "content": {
     "save": "Saqlash"
+  },
+  "login": {
+    "name": "Tizimga kirish",
+    "form": {
+      "login": "Login",
+      "password": "Parol"
+    }
+
   }
 }

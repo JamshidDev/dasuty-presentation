@@ -2,8 +2,7 @@ import i18n from "@/i18n/index.js"
 const {t} = i18n.global
 const triggerEvents =  ['input', 'blur-sm']
 
-
-const rules = {
+export const rules = {
     common: {
         requiredStringField: {
             required: true,
@@ -52,7 +51,7 @@ const rules = {
             },
         ],
     },
-    rulesNames:{
+    names:{
         requiredStringField:'requiredStringField',
         requiredDateTimeField:'requiredDateTimeField',
         requiredNumberField:'requiredNumberField',
