@@ -7,6 +7,12 @@
 import { ref, onMounted } from 'vue';
 import * as d3 from 'd3';
 
+
+
+const svg = ref();
+const width = 1200;
+const height = 900;
+
 const mocData = [
   {
     "id": 4,
@@ -140,16 +146,11 @@ const mocData = [
   }
 ]
 
-
-
-const width = 1200;
-const height = 900;
-const svg = ref();
-
 const nodes = [
-  { id: 'center', label: 'Store Dynamics', type: 'center', value: '87%' }
+  { id: 'center', label: 'Store Dynamics', type: 'center', value: '87%', fx: width / 2, fy: height / 2 }
 ];
 const links = [];
+
 
 mocData.forEach(project => {
   const projectId = `project-${project.id}`;
@@ -195,9 +196,35 @@ mocData.forEach(project => {
 });
 
 
+
+mocData.forEach(project => {
+  const projectId = `project-${project.id}`;
+  nodes.push({ id: projectId, label: project.nameUz, value: project.nameUz, type: 'project' });
+  links.push({ source: 'center', target: projectId });
+
+  project.modules.forEach(module => {
+    const moduleId = `module-${module.id}`;
+    nodes.push({ id: moduleId, label: module.nameUz, value: module.nameUz, type: 'percent' });
+    links.push({ source: projectId, target: moduleId });
+
+    module.submodules.forEach(sub => {
+      const subId = `submodule-${sub.id}`;
+      nodes.push({
+        id: subId,
+        label: sub.nameUz,
+        value: sub.nameUz,
+        type: 'submodules',
+        status: sub.status
+      });
+      links.push({ source: moduleId, target: subId });
+    });
+  });
+});
+
 onMounted(() => {
   const svgEl = d3.select(svg.value);
 
+  // Gradients and drop shadow
   svgEl.append("defs").html(`
     <radialGradient id="radialGradient" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#ff6ea1"/>
@@ -211,26 +238,16 @@ onMounted(() => {
       <stop offset="0%" stop-color="#ff6ea1"/>
       <stop offset="100%" stop-color="#a18cd1"/>
     </linearGradient>
-  `);
-
-  svgEl.append('defs').html(`
     <filter id="drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
       <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.3" />
     </filter>
   `);
 
-
   const simulation = d3.forceSimulation(nodes)
-    .force('link', d3.forceLink(links)
-      .id(d => d.id)
-      .distance(d => {
-        if (d.source.id === 'center') return 220;
-        if (d.source.type === 'main') return 220;
-        if (d.source.type === 'percent') return 220;
-        if (d.source.type === 'submodules') return 220;
-        return 220;
-      }))
-    .force('charge', d3.forceManyBody().strength(-900))
+    .force('link', d3.forceLink(links).id(d => d.id).distance(d => {
+      return d.source.id === 'center' ? 220 : 150;
+    }))
+    .force('charge', d3.forceManyBody().strength(-800))
     .force('center', d3.forceCenter(width / 2, height / 2));
 
   const link = svgEl.append('g')
@@ -243,61 +260,36 @@ onMounted(() => {
   const node = svgEl.append('g')
     .selectAll('g')
     .data(nodes)
-    .join('g')
-    .call(drag(simulation));
+    .join('g');
 
-  // Center node special design
-  const centerNode = node.filter(d => d.type === 'center');
+  const centerNode = node.filter(d => d.type === 'center').style('pointer-events', 'none');
+  const otherNodes = node.filter(d => d.type !== 'center').call(drag(simulation));
 
-  const percentNode = node.filter(d => d.type === 'percent');
-
-  percentNode.append('circle') // Outer ring
-    .attr('r', 60)
-    .attr('fill', 'none')
-    .attr('stroke', '#023AFF')
-    .attr('stroke-width', 10);
-
-  percentNode.append('circle') // Inner white circle
-    .attr('r', 20)
-    .attr('fill', '#023AFF');
-
-  centerNode.append('circle') // Outer ring
+  // Center node
+  centerNode.append('circle')
     .attr('r', 120)
     .attr('fill', 'none')
     .attr('stroke', 'url(#centerGradient)')
     .attr('stroke-width', 30);
 
-  centerNode.append('circle') // Inner white circle with shadow
+  centerNode.append('circle')
     .attr('r', 90)
     .attr('fill', 'white')
     .attr('filter', 'url(#drop-shadow)');
 
+  centerNode.append('rect')
+    .attr('x', -10).attr('y', -50).attr('width', 20).attr('height', 20)
+    .attr('transform', 'rotate(45)').attr('fill', '#00d3ff33');
 
-  centerNode.append('rect') // Icon (diamond)
-    .attr('x', -10)
-    .attr('y', -50)
-    .attr('width', 20)
-    .attr('height', 20)
-    .attr('transform', 'rotate(45)')
-    .attr('fill', '#00d3ff33');
+  centerNode.append('rect')
+    .attr('x', -20).attr('y', -10).attr('width', 20).attr('height', 20)
+    .attr('transform', 'rotate(45)').attr('fill', '#00d3ff33');
 
-  centerNode.append('rect') // Icon (diamond)
-    .attr('x', -20)
-    .attr('y', -10)
-    .attr('width', 20)
-    .attr('height', 20)
-    .attr('transform', 'rotate(45)')
-    .attr('fill', '#00d3ff33');
+  centerNode.append('rect')
+    .attr('x', -50).attr('y', -10).attr('width', 20).attr('height', 20)
+    .attr('transform', 'rotate(45)').attr('fill', '#00d3ff33');
 
-  centerNode.append('rect') // Icon (diamond)
-    .attr('x', -50)
-    .attr('y', -10)
-    .attr('width', 20)
-    .attr('height', 20)
-    .attr('transform', 'rotate(45)')
-    .attr('fill', '#00d3ff33');
-
-  centerNode.append('text') // Label
+  centerNode.append('text')
     .text('STORE DYNAMICS')
     .attr('y', -20)
     .attr('text-anchor', 'middle')
@@ -305,24 +297,30 @@ onMounted(() => {
     .attr('font-size', '12px')
     .attr('font-weight', '600');
 
-  centerNode.append('text') // Value
-    .html(d => d.value)
+  centerNode.append('text')
+    .text(d => d.value)
     .attr('y', 25)
     .attr('text-anchor', 'middle')
     .attr('fill', '#1f2937')
     .attr('font-size', '34px')
     .attr('font-weight', '700');
 
-  // Other nodes
-  const otherNodes = node.filter(d => d.type !== 'center');
+  // Percent style nodes
+  const percentNode = node.filter(d => d.type === 'percent');
+  percentNode.append('circle').attr('r', 60).attr('fill', 'none').attr('stroke', '#023AFF').attr('stroke-width', 10);
+  percentNode.append('circle').attr('r', 20).attr('fill', '#023AFF');
 
+  // Other nodes
   otherNodes.append('circle')
-    .attr('r', d => d.type === 'main' ? 40 : 60)
-    .attr('fill', d => d.type === 'main' ? 'url(#mainGradient)' : d.type === 'submodules' ? '#442eb6' : '#1B1C40')
+    .attr('r', d => d.type === 'main' ? 40 : d.type === 'submodules' ? 40 : 60)
+    .attr('fill', d => {
+      if (d.type === 'submodules') return '#442eb6';
+      if (d.type === 'project') return 'url(#mainGradient)';
+      return '#1B1C40';
+    })
     .attr('stroke', '#ccc')
     .attr('stroke-width', 2)
     .attr('filter', 'url(#drop-shadow)');
-
 
   otherNodes.append('text')
     .text(d => d.value)
@@ -334,10 +332,8 @@ onMounted(() => {
 
   simulation.on('tick', () => {
     link
-      .attr('x1', d => d.source.x)
-      .attr('y1', d => d.source.y)
-      .attr('x2', d => d.target.x)
-      .attr('y2', d => d.target.y);
+      .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
 
     node.attr('transform', d => `translate(${d.x},${d.y})`);
   });
@@ -364,6 +360,6 @@ function drag(simulation) {
 
 <style scoped>
 svg {
-  background: transparent !important
+  background: transparent !important;
 }
 </style>
