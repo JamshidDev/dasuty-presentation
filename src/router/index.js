@@ -1,6 +1,6 @@
 
 import {createRouter, createWebHistory} from "vue-router"
-import {LoginPage, GantChartPage, DashboardPage} from "@/pages/index.js"
+import {LoginPage, GantChartPage, DashboardPage, } from "@/pages/index.js"
 import {ProjectsPage, ProjectInstancePage} from "@/pages"
 import {useAppSetting} from "@/utils/index.js"
 const appLayout = useAppSetting.appLayouts
@@ -15,6 +15,14 @@ const routes = [
                 path: "",
                 name:"Home",
                 component: GantChartPage,
+                meta:{
+                    layout:appLayout.client
+                }
+            },
+            {
+                path: "dashboard",
+                name:"Dashboard",
+                component: DashboardPage,
                 meta:{
                     layout:appLayout.client
                 }
