@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -151,4 +152,10 @@
   --color-infoDarkBackgroundImmutable: #E3F2FD;
   --color-infoLightTextImmutable: #0288D1;
   --color-infoDarkTextImmutable: #0288D1;
+}
+
+*{
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
