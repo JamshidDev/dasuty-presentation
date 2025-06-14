@@ -6,7 +6,7 @@ import Footer from "./ui/Footer.vue"
 <template>
 <div class="flex flex-col bg-line">
   <ToolBar/>
-  <div class="w-full  h-[calc(100vh-140px)]">
+  <div class="w-full  min-h-[calc(100vh-140px)]">
     <slot name="default"></slot>
   </div>
   <Footer/>

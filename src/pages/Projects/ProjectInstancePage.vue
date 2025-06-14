@@ -1,6 +1,7 @@
 <script setup>
 import UIPageContent from '@/components/ui/UIPageContent.vue';
 import Document from './ui/Document.vue'
+import { GantChartPage } from "@/pages/index.js"
 
 const sample = {
     name: "Railmap",
@@ -12,7 +13,7 @@ const modules = [sample, sample, sample, sample, sample, sample, sample, sample,
 
 </script>
 <template>
-    <n-tabs type="segment" animated>
+    <n-tabs type="segment" animated >
         <n-tab-pane name="Umumiy ma'lumotlar" tab="Umumiy ma'lumotlar">
             <UIPageContent>
 
@@ -71,7 +72,8 @@ const modules = [sample, sample, sample, sample, sample, sample, sample, sample,
                         <p class="text-text-icon-primary2-mutable font-bold text-4xl leading-11">Loyiha modul</p>
                         <div class="grid grid-cols-4 modules_grid">
                             <template v-for="(module, idx) in modules" :key="idx">
-                                <div class="col-span-4 h-[70px] grid_separator relative" v-if="idx && idx % 4 == 0"></div>
+                                <div class="col-span-4 h-[70px] grid_separator relative" v-if="idx && idx % 4 == 0">
+                                </div>
                                 <div class="modules_grid-item flex flex-col gap-3 border-t-2 border-b-2 border-brand-light-background-mutable-hover p-5 pl-0 relative"
                                     :class="{ 'row-last': (idx + 1) % 4 == 0 }">
                                     <p class="font-bold text-lg text-text-icon-primary1-mutable">{{ module.name }}</p>
@@ -84,7 +86,9 @@ const modules = [sample, sample, sample, sample, sample, sample, sample, sample,
                                                 class="w-full!" />
                                         </div>
                                     </div>
-                                    <p class="absolute w-[40px] h-[40px] flex justify-center items-center rounded-xl bg-brand-light-background-mutable-hover text-brand-background-text-immutable font-bold text-lg top-0 translate-y-[-50%]">{{ idx+1 }}</p>
+                                    <p
+                                        class="absolute w-[40px] h-[40px] flex justify-center items-center rounded-xl bg-brand-light-background-mutable-hover text-brand-background-text-immutable font-bold text-lg top-0 translate-y-[-50%]">
+                                        {{ idx + 1 }}</p>
                                 </div>
                             </template>
 
@@ -96,7 +100,7 @@ const modules = [sample, sample, sample, sample, sample, sample, sample, sample,
 
         </n-tab-pane>
         <n-tab-pane name="Gant chart" tab="Gant chart">
-            GantChart
+            <GantChartPage />
         </n-tab-pane>
         <n-tab-pane name="Xodimlar" tab="Xodimlar">
             Xodimlar
