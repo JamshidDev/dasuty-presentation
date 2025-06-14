@@ -2,7 +2,7 @@
 import {customTheme, naiveBreakpoints} from "@/assets/theme"
 import { uzUZ, dateUzUZ, ruRU, dateRuRU, enUS, dateEnUS, }  from 'naive-ui'
 import i18n from "@/i18n/index"
-import {clientApp} from "@/Layout/index.js"
+import {appLayout} from "@/Layout/index.js"
 
 const localProvider = computed(()=>{
   if(i18n.global.locale==='uz'){
@@ -33,7 +33,7 @@ const localProvider = computed(()=>{
   >
     <n-message-provider placement="top-right">
       <n-dialog-provider>
-        <clientApp/>
+        <appLayout/>
       </n-dialog-provider>
     </n-message-provider>
   </n-config-provider>

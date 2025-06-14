@@ -33,4 +33,7 @@ export const customTheme = ()=>({
         borderRadius: '12px',
         borderColor: getValueOfCssVariable('--line1-primary-mutable'), // Komponentlar uchun standart chegara rangi
     },
+    Progress: {
+        fillColor: getValueOfCssVariable('--brand-background-text-immutable'),
+    }
 })

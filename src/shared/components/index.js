@@ -1,0 +1,1 @@
+export {default as UIProgress} from './UIProgress.vue' 

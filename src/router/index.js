@@ -1,22 +1,40 @@
 
 import {createRouter, createWebHistory} from "vue-router"
 import {LoginPage, HomePage} from "@/pages/index.js"
-
-
-
+import {ProjectsPage} from "@/pages"
+import {useAppSetting} from "@/utils/index.js"
+const appLayout = useAppSetting.appLayouts
 
 
 
 const routes = [
     {
         path:"/",
-        name:"Home",
-        component: HomePage,
+        children: [
+            {
+                path: "",
+                name:"Home",
+                component: HomePage,
+                meta:{
+                    layout:appLayout.client
+                }
+            },
+            {
+                path: "projects",
+                name:"Projects",
+                component: ProjectsPage,
+                meta:{
+                    layout:appLayout.client
+                }
+            },
+        ]
     },
     {
         path:"/login",
-        name:"Home",
         component: LoginPage,
+        meta:{
+            layout:appLayout.empty
+        }
     }
 
 ]
