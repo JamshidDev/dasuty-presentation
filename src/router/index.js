@@ -1,7 +1,7 @@
 
 import {createRouter, createWebHistory} from "vue-router"
 import {LoginPage, HomePage} from "@/pages/index.js"
-import {ProjectsPage} from "@/pages"
+import {ProjectsPage, ProjectInstancePage} from "@/pages"
 import {useAppSetting} from "@/utils/index.js"
 const appLayout = useAppSetting.appLayouts
 
@@ -27,6 +27,14 @@ const routes = [
                     layout:appLayout.client
                 }
             },
+            {
+                path: "projects/:id",
+                name:"ProjectInstance",
+                component: ProjectInstancePage,
+                meta:{
+                    layout:appLayout.client
+                }
+            }
         ]
     },
     {

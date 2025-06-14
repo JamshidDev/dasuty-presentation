@@ -35,5 +35,11 @@ export const customTheme = ()=>({
     },
     Progress: {
         fillColor: getValueOfCssVariable('--brand-background-text-immutable'),
+    },
+    Tabs: {
+        tabColorSegment: getValueOfCssVariable('--brand-background-text-immutable'),
+        tabTextColorSegment: getValueOfCssVariable('--text-icon-primary1-mutable'),
+        tabTextColorActiveSegment: getValueOfCssVariable('--bright-immutable'),
+        tabBorderRadius: "24px",
     }
 })

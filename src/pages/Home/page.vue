@@ -1,7 +1,6 @@
 <script setup>
 import ForceGraph from './ui/DashboardChart.vue';
 </script>
-
 <template>
   <main class="container">
     <div>
