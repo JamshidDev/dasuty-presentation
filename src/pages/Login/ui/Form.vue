@@ -19,7 +19,7 @@ const onSubmit = ()=>{
       :rules="rules.common"
       :model="store.payload"
       class="grid grid-cols-12 w-full max-w-[440px]
-       bg-white p-8 rounded-3xl  mt-[180px]"
+       bg-white p-8 rounded-3xl mt-[120px]  2xl:mt-[160px]"
   >
     <h1 class="text-4xl font-bold text-center col-span-12 text-text-icon-primary2-mutable mb-10">{{$t(`login.form.enter`)}}</h1>
     <n-form-item
@@ -53,9 +53,10 @@ const onSubmit = ()=>{
       />
     </n-form-item>
     <n-button
+        @click="onSubmit"
         size="large"
         type="primary"
-        class="col-span-12"
+        class="col-span-12 !mt-4"
     >
       {{$t(`login.form.enter`)}}
     </n-button>
