@@ -13,5 +13,10 @@ export const  useAppSetting = {
         idCard:'idcard',
         pfx:"pfx"
     },
+    appLayouts:{
+        client:'clientMode',
+        empty:'emptyMode',
+        admin:'adminMode',
+    },
     appPermission:'appPermission'
 }

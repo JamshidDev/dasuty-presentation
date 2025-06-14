@@ -23,9 +23,11 @@ declare module 'vue' {
     NTabPane: typeof import('naive-ui')['NTabPane']
     NTabs: typeof import('naive-ui')['NTabs']
     NTooltip: typeof import('naive-ui')['NTooltip']
+    Profile: typeof import('./src/components/icon/Profile.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     UILanguage: typeof import('./src/components/ui/UILanguage.vue')['default']
+    UIPageContent: typeof import('./src/components/ui/UIPageContent.vue')['default']
     UIThemeSwitch: typeof import('./src/components/ui/UIThemeSwitch.vue')['default']
   }
 }
