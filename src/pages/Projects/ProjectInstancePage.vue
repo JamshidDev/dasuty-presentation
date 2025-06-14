@@ -1,5 +1,5 @@
 <script setup>
-
+import {GantChartPage} from "@/pages/index.js"
 import UIPageContent from '@/components/ui/UIPageContent.vue';
 
 
@@ -71,7 +71,7 @@ import UIPageContent from '@/components/ui/UIPageContent.vue';
                 </div>
             </n-tab-pane>
             <n-tab-pane name="Gant chart" tab="Gant chart">
-                GantChart
+                <GantChartPage/>
             </n-tab-pane>
             <n-tab-pane name="Xodimlar" tab="Xodimlar">
                 Xodimlar
