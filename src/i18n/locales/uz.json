@@ -4,8 +4,11 @@
   },
   "login": {
     "name": "Tizimga kirish",
+    "title": "“Das UTY” MCHJ",
+    "subtitle": "2025-йил рақамлаштириш соҳасида амалга оширилаётган ишлар",
     "form": {
       "login": "Login",
+      "enter": "Kirish",
       "password": "Parol"
     }
 

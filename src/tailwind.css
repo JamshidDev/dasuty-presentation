@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
-
 :root {
-  --brand-background-text-immutable: #58C2DB;
-  --brand-light-background-mutable: #33bcd8;
+  --brand-background-text-immutable: #2563EB;
+  --brand-light-background-mutable: #E0FAFF;
   --brand-light-background-immutable: #E0FAFF;
   --brand-light-background-disabled-mutable: #E0FAFF;
   --brand-dark-background-mutable: #135160;
