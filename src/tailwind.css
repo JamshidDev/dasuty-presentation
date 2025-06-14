@@ -283,6 +283,7 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
+
     border-color: var(--line1-primary-mutable, currentcolor);
   }
 }

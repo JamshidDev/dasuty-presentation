@@ -3,14 +3,13 @@ import {createRouter, createWebHistory} from "vue-router"
 import {LoginPage, HomePage} from "@/pages/index.js"
 import ClientLayout from "@/Layout/ClientLayout.vue"
 import MainLayout from "@/Layout/MainLayout.vue"
-import {ProjectsPage} from "@/pages"
+import {ProjectsPage, ProjectInstancePage} from "@/pages"
 
 
 
 const routes = [
     {
-        path:"/",
-        
+        path:"/",     
         component: MainLayout,
         children: [
             {
@@ -21,8 +20,13 @@ const routes = [
             {
                 path: "projects",
                 name:"Projects",
-                component: ProjectsPage
+                component: ProjectsPage,
             },
+            {
+                path: "projects/:id",
+                name:"ProjectInstance",
+                component: ProjectInstancePage,
+            }
         ]
     },
     {
