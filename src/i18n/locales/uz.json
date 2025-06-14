@@ -1,6 +1,23 @@
 {
   "content": {
-    "save": "Saqlash"
+    "save": "Saqlash",
+    "langEn": "EN",
+    "langRu": "RU",
+    "langUz": "UZ"
+  },
+  "rules": {
+    "login": "Email kiritilishi shart!",
+    "phone": "Telefon raqam kiritilishi shart!",
+    "password": "Parol kiritilishi shart!",
+    "requiredField": "Maydon to'ldirilishi shart!",
+    "requiredWorker": "Xodim tanlash shart!",
+    "requiredImageField": "Rasm yuklanishi shart!",
+    "requiredFileField": "Fayl yuklanishi shart!",
+    "requiredMinLength": "{n} ta belgidan kam bo'lmasligi kerak",
+    "requiredMaxLength": "{n} ta belgidan ko'p bo'lmasligi kerak",
+    "unExpectedFormat": "Noto'g'ri turdagi ma'lumot!",
+    "requiredJSHSHIR": "Pasport JSHSHIR kiritilishi shart!",
+    "enterOverNumber": "{n}dan katta son kiriting"
   },
   "login": {
     "name": "Tizimga kirish",
@@ -11,6 +28,5 @@
       "enter": "Kirish",
       "password": "Parol"
     }
-
   }
 }
