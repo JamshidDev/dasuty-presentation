@@ -1,12 +1,17 @@
 <script setup>
 import ForceGraph from './ui/DashboardChart.vue';
+import image from '@/assets/images/bg.png'
+
 </script>
 <template>
-  <main class="container">
-    <div>
-      <div class="abstraction"></div>
+  <main class="mx-auto">
+    <div class="relative flex justify-center items-center">
+      <div class="absolute -z-[1] overflow-hidden">
+        <img :src="image" :alt="image" />
+      </div>
+      <!-- <div class="abstraction"></div>
       <div class="abstraction-2"></div>
-      <div class="abstraction-3"></div>
+      <div class="abstraction-3"></div> -->
       <div class="main">
         <ForceGraph />
       </div>
