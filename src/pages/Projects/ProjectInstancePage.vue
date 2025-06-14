@@ -1,15 +1,24 @@
 <script setup>
-
 import UIPageContent from '@/components/ui/UIPageContent.vue';
+import Document from './ui/Document.vue'
+import { GantChartPage } from "@/pages/index.js"
 
+const sample = {
+    name: "Railmap",
+    description: "Hamma ma'lumotlar bitta xaritada — real vaqtda nazorat va tahlil",
+    percentage: 50
+}
+
+const modules = [sample, sample, sample, sample, sample, sample, sample, sample, sample,]
 
 </script>
 <template>
-    <UIPageContent>
-        <n-tabs type="segment" animated>
-            <n-tab-pane name="Umumiy ma'lumotlar" tab="Umumiy ma'lumotlar">
+    <n-tabs type="segment" animated >
+        <n-tab-pane name="Umumiy ma'lumotlar" tab="Umumiy ma'lumotlar">
+            <UIPageContent>
+
                 <div class="flex flex-col gap-[72px]">
-    
+
                     <div class="flex gap-10 items-center">
                         <img src="/imgs/sample.jpg" alt="sample" class="rounded-2xl aspect-[2/1] object-cover w-[50%]">
                         <div class="grow basis-auto">
@@ -17,24 +26,28 @@ import UIPageContent from '@/components/ui/UIPageContent.vue';
                             <p class="mt-2 text-text-icon-secondary1-mutable font-medium text-lg leading-7">Railmap — bu
                                 O‘zbekiston temir yo‘llarining holatini yagona interaktiv xaritada real
                                 vaqt
-                                rejimida kuzatish va tahlil qilish imkonini beruvchi zamonaviy raqamli boshqaruv tizimidir.
+                                rejimida kuzatish va tahlil qilish imkonini beruvchi zamonaviy raqamli boshqaruv
+                                tizimidir.
                             </p>
                             <div class="flex mt-8">
                                 <div class="grow basis-auto">
-                                    <p class="text-xs text-text-icon-secondary1-mutable leading-[16px]">Boshlangan sana</p>
+                                    <p class="text-xs text-text-icon-secondary1-mutable leading-[16px]">Boshlangan sana
+                                    </p>
                                     <p
                                         class="mt-[2px] text-brand-background-text-immutable text-lg font-bold leading-[20px]">
                                         14-iyun, 2025</p>
                                 </div>
                                 <div class="grow basis-auto">
-                                    <p class="text-xs text-text-icon-secondary1-mutable leading-[16px]">Yuklangan hujjatlar
+                                    <p class="text-xs text-text-icon-secondary1-mutable leading-[16px]">Yuklangan
+                                        hujjatlar
                                     </p>
                                     <p
                                         class="mt-[2px] text-brand-background-text-immutable text-lg font-bold leading-[20px]">
                                         7 ta</p>
                                 </div>
                                 <div class="grow basis-auto">
-                                    <p class="text-xs text-text-icon-secondary1-mutable leading-[16px]">Xodimlar soni</p>
+                                    <p class="text-xs text-text-icon-secondary1-mutable leading-[16px]">Xodimlar soni
+                                    </p>
                                     <p
                                         class="mt-[2px] text-brand-background-text-immutable text-lg font-bold leading-[20px]">
                                         12 ta</p>
@@ -45,37 +58,77 @@ import UIPageContent from '@/components/ui/UIPageContent.vue';
                     <div class="flex flex-col gap-8">
                         <p class="text-text-icon-primary2-mutable font-bold text-4xl leading-11">Hujjatlar</p>
                         <div class="grid gap-4 grid-cols-3">
-                            <div class="rounded-3xl border-[0.4px] p-2 bg-bright-mutable">
-                                <div class="flex gap-4">
-                                    <div
-                                        class="rounded-2xl bg-brand-light-background-mutable flex justify-center items-center h-[64px] w-[64px]">
-                                        <img src="/imgs/document.png" class="w-[40px] h-[40px]" />
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div>
-                                            <p class="font-bold">Reestr.uz xulosasi</p>
-                                            <div class="px-2 py-1 rounded-lg bg-success-light-background-mutable inline-block border border-black/5">
-                                                <p class="text-success-background-immutable inline-block font-semibold text-sm leading-4">Yuklangan</p>
-                                            </div>
-                                        </div>
-                                        <n-button>
-                                            <template #icon>
-    
-                                            </template>
-                                        </n-button>
-                                    </div>
-                                </div>
-                            </div>
+                            <Document />
+                            <Document />
+                            <Document />
+                            <Document />
+                            <Document />
+                            <Document />
+                            <Document />
+                            <Document :type="0" />
                         </div>
                     </div>
+                    <div class="flex flex-col gap-8">
+                        <p class="text-text-icon-primary2-mutable font-bold text-4xl leading-11">Loyiha modul</p>
+                        <div class="grid grid-cols-4 modules_grid">
+                            <template v-for="(module, idx) in modules" :key="idx">
+                                <div class="col-span-4 h-[70px] grid_separator relative" v-if="idx && idx % 4 == 0">
+                                </div>
+                                <div class="modules_grid-item flex flex-col gap-3 border-t-2 border-b-2 border-brand-light-background-mutable-hover p-5 pl-0 relative"
+                                    :class="{ 'row-last': (idx + 1) % 4 == 0 }">
+                                    <p class="font-bold text-lg text-text-icon-primary1-mutable">{{ module.name }}</p>
+                                    <p class="font-medium text-text-icon-secondary1-mutable">{{ module.description }}
+                                    </p>
+                                    <div class="flex gap-5 items-center">
+                                        <p class="w-[20px] font-semibold">{{ module.percentage }}%</p>
+                                        <div class="grow basis-auto">
+                                            <n-progress :height="12" type="line" :percentage="module.percentage"
+                                                class="w-full!" />
+                                        </div>
+                                    </div>
+                                    <p
+                                        class="absolute w-[40px] h-[40px] flex justify-center items-center rounded-xl bg-brand-light-background-mutable-hover text-brand-background-text-immutable font-bold text-lg top-0 translate-y-[-50%]">
+                                        {{ idx + 1 }}</p>
+                                </div>
+                            </template>
+
+                        </div>
+                    </div>
+                    <div class="h-[200px]"></div>
                 </div>
-            </n-tab-pane>
-            <n-tab-pane name="Gant chart" tab="Gant chart">
-                GantChart
-            </n-tab-pane>
-            <n-tab-pane name="Xodimlar" tab="Xodimlar">
-                Xodimlar
-            </n-tab-pane>
-        </n-tabs>
-    </UIPageContent>
+            </UIPageContent>
+
+        </n-tab-pane>
+        <n-tab-pane name="Gant chart" tab="Gant chart">
+            <GantChartPage />
+        </n-tab-pane>
+        <n-tab-pane name="Xodimlar" tab="Xodimlar">
+            Xodimlar
+        </n-tab-pane>
+    </n-tabs>
 </template>
+
+<style scoped>
+.row-last {
+    border-right: 2px solid var(--color-brand-light-background-mutable-hover);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.grid_separator::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    left: -30px;
+    width: 30px;
+    border: 2px solid var(--color-brand-light-background-mutable-hover);
+    border-right: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.modules_grid-item:last-child {
+    border: none;
+}
+</style>

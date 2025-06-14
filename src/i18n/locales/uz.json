@@ -29,5 +29,12 @@
       "enter": "Kirish",
       "password": "Parol"
     }
+  },
+  "layout": {
+    "tabs": {
+      "projects": "Loyihalar",
+      "projectsList": "Loyihalar ro'yhati",
+      "slides": "Slaydlar"
+    }
   }
 }

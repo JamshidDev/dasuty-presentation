@@ -40,6 +40,6 @@ export const customTheme = ()=>({
         tabColorSegment: getValueOfCssVariable('--brand-background-text-immutable'),
         tabTextColorSegment: getValueOfCssVariable('--text-icon-primary1-mutable'),
         tabTextColorActiveSegment: getValueOfCssVariable('--bright-immutable'),
-        tabBorderRadius: "24px",
+        tabBorderRadius: "24px",    
     }
 })

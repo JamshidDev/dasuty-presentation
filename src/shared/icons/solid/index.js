@@ -1,4 +1,4 @@
-import DownloadIcon from "./DownloadIcon.vue"
+import DownloadSolidIcon from "./DownloadIcon.vue"
 export const solidIcons = {
-    DownloadIcon
+    DownloadSolidIcon
 }
