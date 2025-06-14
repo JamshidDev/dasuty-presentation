@@ -23,6 +23,12 @@ const getValueOfCssVariable = (variableName) => {
 /** @returns {GlobalThemeOverrides} */
 export const customTheme = ()=>({
     common: {
+        primaryColor:getValueOfCssVariable('--brand-background-text-immutable'),
+        primaryColorHover:getValueOfCssVariable('--brand-background-text-immutable'),
+        primaryColorPressed:getValueOfCssVariable('--brand-background-text-immutable'),
+
+        inputColor:getValueOfCssVariable('--background-default-mutable'),
+
         placeholderColor:getValueOfCssVariable('--text-icon-secondary1-mutable'),// Kiritish maydonlaridagi joylashtiruvchi matn rangi
         borderRadius: '12px',
         borderColor: getValueOfCssVariable('--line1-primary-mutable'), // Komponentlar uchun standart chegara rangi

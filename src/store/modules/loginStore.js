@@ -4,8 +4,8 @@ import {getActivePinia} from "pinia"
 export const useLoginStore = defineStore('loginStore', {
     state:()=>({
         payload:{
-            login:true,
-            password:true,
+            login:null,
+            password:null,
         },
         loading:false,
 
