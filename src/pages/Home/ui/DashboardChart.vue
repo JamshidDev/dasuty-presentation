@@ -318,7 +318,7 @@ onMounted(() => {
 
   otherNodes.append('circle')
     .attr('r', d => d.type === 'main' ? 40 : 60)
-    .attr('fill', d => d.type === 'main' ? 'url(#mainGradient)' : d.type === 'submodules' ? '#f9a8d4' : '#1B1C40')
+    .attr('fill', d => d.type === 'main' ? 'url(#mainGradient)' : d.type === 'submodules' ? '#442eb6' : '#1B1C40')
     .attr('stroke', '#ccc')
     .attr('stroke-width', 2)
     .attr('filter', 'url(#drop-shadow)');

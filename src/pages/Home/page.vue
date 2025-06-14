@@ -17,7 +17,7 @@ import ForceGraph from './ui/DashboardChart.vue';
 
 <style scoped>
 .abstraction-2 {
-  background: rgba(242, 229, 248, 0.526);
+  background: #2eb6521c;
   z-index: -1;
   border-radius: 100%;
   width: 300px;
@@ -28,7 +28,7 @@ import ForceGraph from './ui/DashboardChart.vue';
 }
 
 .abstraction-3 {
-  background: rgba(242, 229, 248, 0.526);
+  background: #2eb6521c;
   z-index: -1;
   width: 300px;
   height: 300px;
@@ -38,7 +38,7 @@ import ForceGraph from './ui/DashboardChart.vue';
 }
 
 .abstraction {
-  background: rgba(242, 229, 248, 0.526);
+  background: #2eb6521c;
   z-index: -1;
   border-radius: 100%;
   width: 200px;
